@@ -43,7 +43,7 @@ platform(
 platform(
     name = "x86_64-qnx",
     constraint_values = [
-        "@platforms//cpu:arm64",
+        "@platforms//cpu:x86_64",
         "@platforms//os:qnx",
     ],
 )
