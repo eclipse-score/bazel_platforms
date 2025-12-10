@@ -47,3 +47,56 @@ platform(
         "@platforms//os:qnx",
     ],
 )
+
+# Warning: Those platforms will be removed for release 0.5 final latest!
+# Below we define a platform to align with toolchain_qnx definitions of toolchains.
+# This all going to be be removed once we migrate to use only the bazel https://github.com/eclipse-score/bazel_cpp_toolchains/
+# and we also migrate toolchain_rust to follow the same pattern as in bazel_cpp_toolchains.
+platform(
+    name = "arm64-qnx8_0",
+    parents = [":arm64-qnx"],
+    constraint_values = [
+        ":qnx8_0",
+    ],
+)
+
+platform(
+    name = "arm64-qnx7_1",
+    parents = [":arm64-qnx"],
+    constraint_values = [
+        ":qnx7_1",
+    ],
+)
+
+platform(
+    name = "x86_64-qnx8_0",
+    parents = [":x86_64-qnx"],
+    constraint_values = [
+        ":qnx8_0",
+    ],
+)
+
+platform(
+    name = "x86_64-qnx7_1",
+    parents = [":x86_64-qnx"],
+    constraint_values = [
+        ":qnx7_1",
+    ],
+)
+
+constraint_setting(
+    name = "qnx_version",
+    visibility = ["//visibility:public"],
+)
+
+constraint_value(
+    name = "qnx7_1",
+    constraint_setting = ":qnx_version",
+    visibility = ["//visibility:public"],
+)
+
+constraint_value(
+    name = "qnx8_0",
+    constraint_setting = ":qnx_version",
+    visibility = ["//visibility:public"],
+)
