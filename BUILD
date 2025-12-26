@@ -16,6 +16,9 @@
 
 package(default_visibility = ["//visibility:public"])
 
+# --------------------------------------------------------------------------------
+# List of base platforms (OS + CPU constraint)
+# --------------------------------------------------------------------------------
 platform(
     name = "arm64-linux",
     constraint_values = [
@@ -48,55 +51,108 @@ platform(
     ],
 )
 
-# Warning: Those platforms will be removed for release 0.5 final latest!
-# Below we define a platform to align with toolchain_qnx definitions of toolchains.
-# This all going to be be removed once we migrate to use only the bazel https://github.com/eclipse-score/bazel_cpp_toolchains/
-# and we also migrate toolchain_rust to follow the same pattern as in bazel_cpp_toolchains.
+# --------------------------------------------------------------------------------
+# List of derived platforms from base platforms
+# --------------------------------------------------------------------------------
 platform(
+    name = "arm64-qnx-sdp_8.0.0-posix",
+    constraint_values = [
+        "@score_bazel_platforms//version:qnx_8.0.0",
+        "@score_bazel_platforms//runtime_es:posix",
+    ],
+    parents = [":arm64-qnx"],
+)
+
+platform(
+    name = "arm64-qnx-sdp_7.1.0-posix",
+    constraint_values = [
+        "@score_bazel_platforms//version:qnx_7.1.0",
+        "@score_bazel_platforms//runtime_es:posix",
+    ],
+    parents = [":arm64-qnx"],
+)
+
+platform(
+    name = "x86_64-qnx-sdp_8.0.0-posix",
+    constraint_values = [
+        "@score_bazel_platforms//version:qnx_8.0.0",
+        "@score_bazel_platforms//runtime_es:posix",
+    ],
+    parents = [":x86_64-qnx"],
+)
+
+platform(
+    name = "x86_64-qnx-sdp_7.1.0-posix",
+    constraint_values = [
+        "@score_bazel_platforms//version:qnx_7.1.0",
+        "@score_bazel_platforms//runtime_es:posix",
+    ],
+    parents = [":x86_64-qnx"],
+)
+
+platform(
+    name = "arm64-linux-gcc_12.2.0-posix",
+    constraint_values = [
+        "@score_bazel_platforms//version:gcc_12.2.0",
+        "@score_bazel_platforms//runtime_es:posix",
+    ],
+    parents = [":arm64-linux"],
+)
+
+platform(
+    name = "x86_64-linux-gcc_12.2.0-posix",
+    constraint_values = [
+        "@score_bazel_platforms//version:gcc_12.2.0",
+        "@score_bazel_platforms//runtime_es:posix",
+    ],
+    parents = [":x86_64-linux"],
+)
+
+platform(
+    name = "x86_64-linux-gcc_8.3.0-posix",
+    constraint_values = [
+        "@score_bazel_platforms//version:gcc_8.3.0",
+        "@score_bazel_platforms//runtime_es:posix",
+    ],
+    parents = [":x86_64-linux"],
+)
+
+
+# --------------------------------------------------------------------------------
+# List of aliases (deprecated targets) to keep compatibility
+# --------------------------------------------------------------------------------
+alias(
     name = "arm64-qnx8_0",
-    parents = [":arm64-qnx"],
-    constraint_values = [
-        ":qnx8_0",
-    ],
+    actual = ":arm64-qnx-sdp_8.0.0-posix",
+    deprecation = "This target is deprecated. Please use target `@score_bazel_platforms//:arm64-qnx-sdp_8.0.0-posix`",
 )
 
-platform(
+alias(
     name = "arm64-qnx7_1",
-    parents = [":arm64-qnx"],
-    constraint_values = [
-        ":qnx7_1",
-    ],
+    actual = ":arm64-qnx-sdp_7.1.0-posix",
+    deprecation = "This target is deprecated. Please use target `@score_bazel_platforms//:arm64-qnx-sdp_7.1.0-posix`",
 )
 
-platform(
+alias(
     name = "x86_64-qnx8_0",
-    parents = [":x86_64-qnx"],
-    constraint_values = [
-        ":qnx8_0",
-    ],
+    actual = ":x86_64-qnx-sdp_8.0.0-posix",
+    deprecation = "This target is deprecated. Please use target `@score_bazel_platforms//:x86_64-qnx-sdp_8.0.0-posix`",
 )
 
-platform(
+alias(
     name = "x86_64-qnx7_1",
-    parents = [":x86_64-qnx"],
-    constraint_values = [
-        ":qnx7_1",
-    ],
+    actual = ":x86_64-qnx-sdp_7.1.0-posix",
+    deprecation = "This target is deprecated. Please use target `@score_bazel_platforms//:x86_64-qnx-sdp_7.1.0-posix`",
 )
 
-constraint_setting(
-    name = "qnx_version",
-    visibility = ["//visibility:public"],
-)
-
-constraint_value(
-    name = "qnx7_1",
-    constraint_setting = ":qnx_version",
-    visibility = ["//visibility:public"],
-)
-
-constraint_value(
+alias(
     name = "qnx8_0",
-    constraint_setting = ":qnx_version",
-    visibility = ["//visibility:public"],
+    actual = "@score_bazel_platforms//version:qnx_8.0.0",
+    deprecation = "This target is deprecated. Please use target `@score_bazel_platforms//version:qnx_8.0.0`",
+)
+
+alias(
+    name = "qnx7_1",
+    actual = "@score_bazel_platforms//version:qnx_7.1.0",
+    deprecation = "This target is deprecated. Please use target `@score_bazel_platforms//version:qnx_7.1.0`",
 )

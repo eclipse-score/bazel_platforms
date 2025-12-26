@@ -12,11 +12,13 @@
 # *******************************************************************************
 
 """ This file holds defintions of custom constraints and their vaules related to runtime ecosystem
-    Examples: autosd, android_auto, adaptive_autosar ...
+    Examples: autosd, posix, android_auto ...
 """ 
 
+package(default_visibility = ["//visibility:public"])
+
 # --------------------------------------------------------------------------------
-# OS version constraint settings definitions and their values
+# Runtime Ecosystem constraint settings definitions and their values
 # --------------------------------------------------------------------------------
 constraint_setting(name="runtime_ecosystem")
 
