@@ -117,6 +117,24 @@ platform(
     parents = [":x86_64-linux"],
 )
 
+platform(
+    name = "x86_64-linux-gcc_autosd-10.0-autosd",
+    constraint_values = [
+        "@score_bazel_platforms//version:gcc_autosd-10.0",
+        "@score_bazel_platforms//runtime_es:autosd",
+    ],
+    parents = [":x86_64-linux"],
+)
+
+platform(
+    name = "aarch64-linux-gcc_autosd-10.0-autosd",
+    constraint_values = [
+        "@score_bazel_platforms//version:gcc_autosd-10.0",
+        "@score_bazel_platforms//runtime_es:autosd",
+    ],
+    parents = [":aarch64-linux"],
+)
+
 
 # --------------------------------------------------------------------------------
 # List of aliases (deprecated targets) to keep compatibility
