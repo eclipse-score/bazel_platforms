@@ -59,3 +59,8 @@ constraint_value(
     constraint_setting = ":gcc_version",
 )
 
+constraint_value(
+    name = "gcc_autosd-10.0",
+    constraint_setting = ":gcc_version",
+)
+
