@@ -32,16 +32,26 @@ constraint_value(
 )
 
 # --------------------------------------------------------------------------------
-# SDP version constraint settings definitions and their values (alias for OS ver.)
+# SDP version constraint settings definitions and their values (alias for QNX OS ver.)
 # --------------------------------------------------------------------------------
 alias(
     name = "sdp_7.1.0",
-    actual = "qnx_8.0.0",
+    actual = ":qnx_7.1.0",
 )
 
 alias(
     name = "sdp_8.0.0",
-    actual = "qnx_8.0.0",
+    actual = ":qnx_8.0.0",
+)
+
+# --------------------------------------------------------------------------------
+# SDK version constraint settings definitions and their values
+# --------------------------------------------------------------------------------
+constraint_setting(name = "sdk_version")
+
+constraint_value(
+    name = "0.1.0",
+    constraint_setting = ":sdk_version",
 )
 
 # --------------------------------------------------------------------------------
