@@ -17,31 +17,23 @@
 package(default_visibility = ["//visibility:public"])
 
 # --------------------------------------------------------------------------------
-# OS version constraint settings definitions and their values
+# SDP version constraint settings definitions and their values
 # --------------------------------------------------------------------------------
-constraint_setting(name = "os_version")
+constraint_setting(name = "sdp_version")
 
 constraint_value(
-    name = "qnx_7.1.0",
-    constraint_setting = ":os_version",
-)
-
-constraint_value(
-    name = "qnx_8.0.0",
-    constraint_setting = ":os_version",
-)
-
-# --------------------------------------------------------------------------------
-# SDP version constraint settings definitions and their values (alias for QNX OS ver.)
-# --------------------------------------------------------------------------------
-alias(
     name = "sdp_7.1.0",
-    actual = ":qnx_7.1.0",
+    constraint_setting = ":sdp_version",
 )
 
-alias(
+constraint_value(
     name = "sdp_8.0.0",
-    actual = ":qnx_8.0.0",
+    constraint_setting = ":sdp_version",
+)
+
+constraint_value(
+    name = "sdp_10.0",
+    constraint_setting = ":sdp_version",
 )
 
 # --------------------------------------------------------------------------------
@@ -50,7 +42,17 @@ alias(
 constraint_setting(name = "sdk_version")
 
 constraint_value(
-    name = "0.1.0",
+    name = "sdk_0.1.0",
+    constraint_setting = ":sdk_version",
+)
+
+# --------------------------------------------------------------------------------
+# SDK version constraint settings definitions and their values
+# --------------------------------------------------------------------------------
+constraint_setting(name = "glibc_version")
+
+constraint_value(
+    name = "glibc_2.39",
     constraint_setting = ":sdk_version",
 )
 
@@ -69,8 +71,17 @@ constraint_value(
     constraint_setting = ":gcc_version",
 )
 
-constraint_value(
-    name = "gcc_autosd-10.0",
-    constraint_setting = ":gcc_version",
+# --------------------------------------------------------------------------------
+# Deprecated values
+# --------------------------------------------------------------------------------
+alias(
+    name = "qnx_8.0.0",
+    actual = ":sdk_8.0.0",
+    deprecation = "This target is deprecated. Please use target `@score_bazel_platforms//version:sdk_8.0.0`",
 )
 
+alias(
+    name = "qnx_7.1.0",
+    actual = ":sdk_7.1.0",
+    deprecation = "This target is deprecated. Please use target `@score_bazel_platforms//version:sdk_7.1.0`",
+)
