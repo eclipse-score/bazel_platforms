@@ -28,6 +28,11 @@ constraint_value(
 )
 
 constraint_value(
+    name = "ebclfsa",
+    constraint_setting = ":runtime_ecosystem",
+)
+
+constraint_value(
     name = "posix",
     constraint_setting = ":runtime_ecosystem",
 )
