@@ -120,7 +120,7 @@ platform(
 platform(
     name = "x86_64-linux-glibc_2.39-autosd",
     constraint_values = [
-        "@score_bazel_platforms//version:sdp_10.0",
+        "@score_bazel_platforms//version:glibc_2.39",
         "@score_bazel_platforms//runtime_es:autosd",
     ],
     parents = [":x86_64-linux"],
@@ -129,7 +129,7 @@ platform(
 platform(
     name = "aarch64-linux-glibc_2.39-autosd",
     constraint_values = [
-        "@score_bazel_platforms//version:sdp_10.0",
+        "@score_bazel_platforms//version:glibc_2.39",
         "@score_bazel_platforms//runtime_es:autosd",
     ],
     parents = [":aarch64-linux"],

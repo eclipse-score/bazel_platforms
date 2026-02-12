@@ -47,13 +47,13 @@ constraint_value(
 )
 
 # --------------------------------------------------------------------------------
-# SDK version constraint settings definitions and their values
+# glibc version constraint settings definitions and their values
 # --------------------------------------------------------------------------------
 constraint_setting(name = "glibc_version")
 
 constraint_value(
     name = "glibc_2.39",
-    constraint_setting = ":sdk_version",
+    constraint_setting = ":glibc_version",
 )
 
 # --------------------------------------------------------------------------------
