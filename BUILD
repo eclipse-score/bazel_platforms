@@ -57,7 +57,7 @@ platform(
 platform(
     name = "aarch64-qnx-sdp_8.0.0-posix",
     constraint_values = [
-        "@score_bazel_platforms//version:qnx_8.0.0",
+        "@score_bazel_platforms//version:sdp_8.0.0",
         "@score_bazel_platforms//runtime_es:posix",
     ],
     parents = [":aarch64-qnx"],
@@ -66,7 +66,7 @@ platform(
 platform(
     name = "aarch64-qnx-sdp_7.1.0-posix",
     constraint_values = [
-        "@score_bazel_platforms//version:qnx_7.1.0",
+        "@score_bazel_platforms//version:sdp_7.1.0",
         "@score_bazel_platforms//runtime_es:posix",
     ],
     parents = [":aarch64-qnx"],
@@ -75,7 +75,7 @@ platform(
 platform(
     name = "x86_64-qnx-sdp_8.0.0-posix",
     constraint_values = [
-        "@score_bazel_platforms//version:qnx_8.0.0",
+        "@score_bazel_platforms//version:sdp_8.0.0",
         "@score_bazel_platforms//runtime_es:posix",
     ],
     parents = [":x86_64-qnx"],
@@ -84,7 +84,7 @@ platform(
 platform(
     name = "x86_64-qnx-sdp_7.1.0-posix",
     constraint_values = [
-        "@score_bazel_platforms//version:qnx_7.1.0",
+        "@score_bazel_platforms//version:sdp_7.1.0",
         "@score_bazel_platforms//runtime_es:posix",
     ],
     parents = [":x86_64-qnx"],
@@ -118,23 +118,22 @@ platform(
 )
 
 platform(
-    name = "x86_64-linux-gcc_autosd-10.0-autosd",
+    name = "x86_64-linux-glibc_2.39-autosd",
     constraint_values = [
-        "@score_bazel_platforms//version:gcc_autosd-10.0",
+        "@score_bazel_platforms//version:sdp_10.0",
         "@score_bazel_platforms//runtime_es:autosd",
     ],
     parents = [":x86_64-linux"],
 )
 
 platform(
-    name = "aarch64-linux-gcc_autosd-10.0-autosd",
+    name = "aarch64-linux-glibc_2.39-autosd",
     constraint_values = [
-        "@score_bazel_platforms//version:gcc_autosd-10.0",
+        "@score_bazel_platforms//version:sdp_10.0",
         "@score_bazel_platforms//runtime_es:autosd",
     ],
     parents = [":aarch64-linux"],
 )
-
 
 # --------------------------------------------------------------------------------
 # List of aliases (deprecated targets) to keep compatibility

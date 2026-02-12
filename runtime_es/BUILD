@@ -13,14 +13,14 @@
 
 """ This file holds defintions of custom constraints and their vaules related to runtime ecosystem
     Examples: autosd, posix, android_auto ...
-""" 
+"""
 
 package(default_visibility = ["//visibility:public"])
 
 # --------------------------------------------------------------------------------
 # Runtime Ecosystem constraint settings definitions and their values
 # --------------------------------------------------------------------------------
-constraint_setting(name="runtime_ecosystem")
+constraint_setting(name = "runtime_ecosystem")
 
 constraint_value(
     name = "autosd",

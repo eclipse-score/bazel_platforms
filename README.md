@@ -69,31 +69,48 @@ This setting is entirely reused from Bazel upstream definitions, however, it's i
 
 This setting is also entirely reused from Bazel upstream definitions.
 
-### Versions
+### Platform Variant (Kind and Version)
 
-Version as constraint is actually reserved for multiple constraint. We currently support:
-- OS version
+The platform_variant constraint represents the `<variant_kind>_<variant_version>` segment of the platform identifier:
+```bash
+cpu-os-<variant_kind>_<variant_version>-runtime_es
+```
+
+This constraint models a versioned environment component that influences build behavior, ABI compatibility, or runtime expectations.</br>
+Only one platform variant is active per platform instance.</br>
+The variant kind determines which component family is being constrained, and the variant version specifies the exact version.</br>
+
+We currently support the following variant kinds:
+
 - GCC version
+- GLIBC version
+- OS version
+- SDK version
+- SDP version
 
 #### `os_version` constraint
 
-The os_version constraint identifies the version of the operating system userland and ABI targeted by a platform.</br>
+The `os_version` constraint identifies the version of the operating system userland and ABI targeted by a platform.</br>
 It captures version-specific compatibility requirements beyond the OS family itself, such as:
+
 - kernel or userland ABI expectations
 - system library versions
-- vendor SDK or BSP alignment
 - OS-level feature availability
+- distribution-specific behavior
 
 This constraint allows targets to distinguish between different versions of the same operating system (for example different QNX or Linux releases) while keeping the OS family modeled separately via the os constraint.</br>
 The os_version constraint is used to:
+
 - ensure ABI compatibility
 - select version-specific dependencies
 - avoid overloading OS or toolchain definitions
+- isolate distribution-specific patches or behaviors
 
 #### `gcc_version` constraint
 
-The gcc_version constraint identifies the major compiler version used to build a target.</br>
+The `gcc_version` constraint identifies the compiler version used to build a target.</br>
 It captures compiler-specific compatibility concerns such as:
+
 - supported language standards
 - code generation behavior
 - ABI or runtime library differences
@@ -101,9 +118,69 @@ It captures compiler-specific compatibility concerns such as:
 
 This constraint allows platforms and toolchains to express compiler version requirements independently of the operating system, CPU architecture, or SDK version.</br>
 The gcc_version constraint is used to:
+
 - select appropriate toolchains
 - gate compiler-dependent features
-- maintain compatibility across compiler upgrades 
+- maintain compatibility across compiler upgrades
+- prevent accidental mixing of incompatible compiler runtimes
+
+#### `glibc_version` constraint
+
+The `glibc_version` constraint identifies the GNU C Library version targeted by the platform.</br>
+Since glibc defines critical parts of the userspace ABI, this constraint directly impacts binary compatibility.</br>
+It captures compatibility requirements such as:
+
+- symbol versioning
+- dynamic loader behavior
+- system call wrappers
+- threading and memory model behavior
+
+This constraint is especially important when:
+- building binaries intended to run on older distributions
+- maintaining forward/backward ABI compatibility
+- cross-compiling against a specific sysroot
+
+The glibc_version constraint is used to:
+
+- guarantee runtime compatibility
+- prevent linking against incompatible libc versions
+- enforce consistent sysroot usage
+
+#### `sdk_version` constraint
+
+The `sdk_version` constraint identifies the version of the Software Development Kit used to build the target.</br>
+An SDK may bundle:
+
+- compilers and linkers
+- sysroots
+- headers and libraries
+- platform configuration files
+- auxiliary build tools
+
+The SDK version often defines a coherent and validated build environment.</br>
+The sdk_version constraint is used to:
+
+- ensure build reproducibility
+- select consistent toolchain bundles
+- align development and CI environments
+- control transitions between SDK releases
+
+#### `sdp_version` constraint
+
+The `sdp_version` constraint identifies the version of the Software Distribution Platform (SDP) targeted by the build.</br>
+An SDP typically represents a higher-level integration layer that may include:
+
+- prebuilt components
+- distribution packaging rules
+- runtime layout definitions
+- platform integration policies
+
+Unlike SDK, which is primarily a build-time concern, SDP may affect both build-time integration and runtime deployment structure.</br>
+The sdp_version constraint is used to:
+
+- ensure compatibility with distribution packaging rules
+- align with deployment/runtime expectations
+- control integration against specific platform releases
 
 ### Runtime Ecosystem
 
@@ -157,7 +234,7 @@ Where:
 |---------------------|----------------------------------------------|-------------------------------|
 | `target_cpu`        | CPU instruction set architecture             | `@platforms//cpu`             |
 | `target_os`         | Operating system family                      | `@platforms//os`              |
-| `version`           | GCC version or SDK/SDP version or OS version | `gcc_version` or `os_version` |
+| `platform_variant`  | GCC version or SDK/SDP version or OS version | `gcc_version` or `os_version` |
 | `runtime_es`        | Runtime ecosystem                            | `runtime_es`                  |
 
 Examples:
