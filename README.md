@@ -199,7 +199,8 @@ The runtime_ecosystem constraint is used for:
 
 Currently, our platform support following `runtime_es`:
 - `autosd`: is an automotive runtime platform and software ecosystem that defines a standardized execution environment for in-vehicle applications. From a build and platform perspective, AutoSD represents a distinct runtime ecosystem that is orthogonal to OS and CPU architecture and must be modeled explicitly to ensure correct compatibility and dependency selection.
-- `posix` : denotes a generic execution environment where applications rely only on standardized POSIX APIs and behavior, without assumptions about higher-level middleware, platform-specific services, or vendor-defined runtime frameworks. 
+- `posix` : denotes a generic execution environment where applications rely only on standardized POSIX APIs and behavior, without assumptions about higher-level middleware, platform-specific services, or vendor-defined runtime frameworks.
+- `ebclfsa`: EB corbos Linux for Safety Applications is a hypervisor-based safety extension to Linux. It can be used for automotive safety-relevant workloads (up to ASIL B / SIL 2 level under ISO 26262 and IEC 61508 standards).
 
 ## Change process
 
@@ -225,7 +226,7 @@ This repository defines canonical Bazel platforms that combine existing constrai
 
 #### Platform Naming Convention
 
-Each platform MUST be named according to the following format:
+Each platform must be named according to the following format:
 ```bash
 {target_cpu}-{target_os}-{gcc_version|sdp_version|or other version}-{runtime_es}
 ```
@@ -237,14 +238,19 @@ Where:
 | `platform_variant`  | GCC version or SDK/SDP version or OS version | `gcc_version` or `os_version` |
 | `runtime_es`        | Runtime ecosystem                            | `runtime_es`                  |
 
+Note that 3rd and 4th segment are optional to set (however we advise people to use it).
+
 Examples:
-| Platform name                 | Meaning           |
-|-------------------------------|-----------------------------------------------------------------------------------|
-| x86_64-linux-gcc_12.2.0-posix | x86_64 Linux built with GCC 12.2.0, POSIX runtime - generic execution environment |
+| Platform name                  | Meaning           |
+|--------------------------------|-----------------------------------------------------------------------------------|
+| x86_64-linux-gcc_12.2.0-posix  | x86_64 Linux built with GCC 12.2.0, POSIX runtime - generic execution environment |
+| aarch64-linux-autosd10         | Arm 64 Linux built, AutoSD 10 runtime - Automotive Stream Distribution            |
+| x86_64-linux-sdk_0.1.0-ebclfsa | x86_64 Linux built, EBcLfSA runtime - EB corbos Linux for Safety Applications     |
+
 
 #### Naming Rules (Mandatory)
 
-1. **All four components are required**.</br>
+1. **OS and CPU are mandatory, platform_variant and runtime_es are optional **.</br>
 No component may be omitted or merged with another.
 
 2. **Lowercase only**.</br>

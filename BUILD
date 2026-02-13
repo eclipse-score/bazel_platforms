@@ -117,24 +117,28 @@ platform(
     parents = [":x86_64-linux"],
 )
 
+# --------------------------------------------------------------------------------
+# Platform definitions for AutoSD
+# --------------------------------------------------------------------------------
 platform(
-    name = "x86_64-linux-glibc_2.39-autosd",
+    name = "x86_64-linux-autosd10",
     constraint_values = [
-        "@score_bazel_platforms//version:glibc_2.39",
-        "@score_bazel_platforms//runtime_es:autosd",
+        "@score_bazel_platforms//runtime_es:autosd10",
     ],
     parents = [":x86_64-linux"],
 )
 
 platform(
-    name = "aarch64-linux-glibc_2.39-autosd",
+    name = "aarch64-linux-autosd10",
     constraint_values = [
-        "@score_bazel_platforms//version:glibc_2.39",
-        "@score_bazel_platforms//runtime_es:autosd",
+        "@score_bazel_platforms//runtime_es:autosd10",
     ],
     parents = [":aarch64-linux"],
 )
 
+# --------------------------------------------------------------------------------
+# Platform definitions for EBcLfSA (EB corbos Linux for Safety Applications)
+# --------------------------------------------------------------------------------
 platform(
     name = "aarch64-linux-sdk_0.1.0-ebclfsa",
     constraint_values = [
@@ -143,7 +147,6 @@ platform(
     ],
     parents = [":aarch64-linux"],
 )
-
 
 # --------------------------------------------------------------------------------
 # List of aliases (deprecated targets) to keep compatibility

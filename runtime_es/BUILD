@@ -23,7 +23,7 @@ package(default_visibility = ["//visibility:public"])
 constraint_setting(name = "runtime_ecosystem")
 
 constraint_value(
-    name = "autosd",
+    name = "autosd10",
     constraint_setting = ":runtime_ecosystem",
 )
 
