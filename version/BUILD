@@ -76,12 +76,12 @@ constraint_value(
 # --------------------------------------------------------------------------------
 alias(
     name = "qnx_8.0.0",
-    actual = ":sdk_8.0.0",
-    deprecation = "This target is deprecated. Please use target `@score_bazel_platforms//version:sdk_8.0.0`",
+    actual = ":sdp_8.0.0",
+    deprecation = "This target is deprecated. Please use target `@score_bazel_platforms//version:sdp_8.0.0`",
 )
 
 alias(
     name = "qnx_7.1.0",
-    actual = ":sdk_7.1.0",
-    deprecation = "This target is deprecated. Please use target `@score_bazel_platforms//version:sdk_7.1.0`",
+    actual = ":sdp_7.1.0",
+    deprecation = "This target is deprecated. Please use target `@score_bazel_platforms//version:sdp_7.1.0`",
 )
