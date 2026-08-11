@@ -62,6 +62,11 @@ constraint_value(
 constraint_setting(name = "gcc_version")
 
 constraint_value(
+    name = "gcc_15.3.0",
+    constraint_setting = ":gcc_version",
+)
+
+constraint_value(
     name = "gcc_12.2.0",
     constraint_setting = ":gcc_version",
 )

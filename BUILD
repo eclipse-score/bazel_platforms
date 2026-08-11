@@ -100,6 +100,15 @@ platform(
 )
 
 platform(
+    name = "aarch64-linux-gcc_15.3.0-posix",
+    constraint_values = [
+        "@score_bazel_platforms//version:gcc_15.3.0",
+        "@score_bazel_platforms//runtime_es:posix",
+    ],
+    parents = [":aarch64-linux"],
+)
+
+platform(
     name = "x86_64-linux-gcc_12.2.0-posix",
     constraint_values = [
         "@score_bazel_platforms//version:gcc_12.2.0",
@@ -107,6 +116,16 @@ platform(
     ],
     parents = [":x86_64-linux"],
 )
+
+platform(
+    name = "x86_64-linux-gcc_15.3.0-posix",
+    constraint_values = [
+        "@score_bazel_platforms//version:gcc_15.3.0",
+        "@score_bazel_platforms//runtime_es:posix",
+    ],
+    parents = [":x86_64-linux"],
+)
+
 
 platform(
     name = "x86_64-linux-gcc_8.3.0-posix",
