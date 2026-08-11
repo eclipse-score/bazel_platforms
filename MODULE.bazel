@@ -14,11 +14,7 @@
 """ This module contains the global definitions of constraint_settings, constraint_values and platforms.
 """
 
-module(
-    name = "score_bazel_platforms",
-    version = "0.1.2",
-    compatibility_level = 0,
-)
+module(name = "score_bazel_platforms")
 
 #############################################################
 #
