@@ -46,6 +46,11 @@ constraint_value(
     constraint_setting = ":sdk_version",
 )
 
+constraint_value(
+    name = "sdk_2.0.0-beta2",
+    constraint_setting = ":sdk_version",
+)
+
 # --------------------------------------------------------------------------------
 # glibc version constraint settings definitions and their values
 # --------------------------------------------------------------------------------
