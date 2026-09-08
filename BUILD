@@ -64,9 +64,9 @@ platform(
 )
 
 platform(
-    name = "aarch64-qnx-sdp_7.1.0-posix",
+    name = "aarch64-qnx-sdp_8.0.5-posix",
     constraint_values = [
-        "@score_bazel_platforms//version:sdp_7.1.0",
+        "@score_bazel_platforms//version:sdp_8.0.5",
         "@score_bazel_platforms//runtime_es:posix",
     ],
     parents = [":aarch64-qnx"],
@@ -82,9 +82,9 @@ platform(
 )
 
 platform(
-    name = "x86_64-qnx-sdp_7.1.0-posix",
+    name = "x86_64-qnx-sdp_8.0.5-posix",
     constraint_values = [
-        "@score_bazel_platforms//version:sdp_7.1.0",
+        "@score_bazel_platforms//version:sdp_8.0.5",
         "@score_bazel_platforms//runtime_es:posix",
     ],
     parents = [":x86_64-qnx"],
@@ -121,16 +121,6 @@ platform(
     name = "x86_64-linux-gcc_15.3.0-posix",
     constraint_values = [
         "@score_bazel_platforms//version:gcc_15.3.0",
-        "@score_bazel_platforms//runtime_es:posix",
-    ],
-    parents = [":x86_64-linux"],
-)
-
-
-platform(
-    name = "x86_64-linux-gcc_8.3.0-posix",
-    constraint_values = [
-        "@score_bazel_platforms//version:gcc_8.3.0",
         "@score_bazel_platforms//runtime_es:posix",
     ],
     parents = [":x86_64-linux"],
@@ -177,52 +167,24 @@ platform(
 )
 
 # --------------------------------------------------------------------------------
-# List of aliases (deprecated targets) to keep compatibility
+# Platform definitions over aliases to use the latest release versions (sdp, gcc and etc)
 # --------------------------------------------------------------------------------
 alias(
-    name = "arm64-linux",
-    actual = ":aarch64-linux",
-    deprecation = "This target is deprecated. Please use target `@score_bazel_platforms//:aarch64-linux`",
+    name = "x86_64-qnx-sdp_latest-posix",
+    actual = ":x86_64-qnx-sdp_8.0.5-posix",
 )
 
 alias(
-    name = "arm64-qnx",
-    actual = ":aarch64-qnx",
-    deprecation = "This target is deprecated. Please use target `@score_bazel_platforms//:aarch64-qnx`",
+    name = "aarch64-qnx-sdp_latest-posix",
+    actual = ":aarch64-qnx-sdp_8.0.5-posix",
 )
 
 alias(
-    name = "arm64-qnx8_0",
-    actual = ":aarch64-qnx-sdp_8.0.0-posix",
-    deprecation = "This target is deprecated. Please use target `@score_bazel_platforms//:aarch64-qnx-sdp_8.0.0-posix`",
+    name = "x86_64-linux-gcc_latest-posix",
+    actual = ":x86_64-linux-gcc_15.3.0-posix",
 )
 
 alias(
-    name = "arm64-qnx7_1",
-    actual = ":aarch64-qnx-sdp_7.1.0-posix",
-    deprecation = "This target is deprecated. Please use target `@score_bazel_platforms//:aarch64-qnx-sdp_7.1.0-posix`",
-)
-
-alias(
-    name = "x86_64-qnx8_0",
-    actual = ":x86_64-qnx-sdp_8.0.0-posix",
-    deprecation = "This target is deprecated. Please use target `@score_bazel_platforms//:x86_64-qnx-sdp_8.0.0-posix`",
-)
-
-alias(
-    name = "x86_64-qnx7_1",
-    actual = ":x86_64-qnx-sdp_7.1.0-posix",
-    deprecation = "This target is deprecated. Please use target `@score_bazel_platforms//:x86_64-qnx-sdp_7.1.0-posix`",
-)
-
-alias(
-    name = "qnx8_0",
-    actual = "@score_bazel_platforms//version:qnx_8.0.0",
-    deprecation = "This target is deprecated. Please use target `@score_bazel_platforms//version:qnx_8.0.0`",
-)
-
-alias(
-    name = "qnx7_1",
-    actual = "@score_bazel_platforms//version:qnx_7.1.0",
-    deprecation = "This target is deprecated. Please use target `@score_bazel_platforms//version:qnx_7.1.0`",
+    name = "aarch64-linux-gcc_latest-posix",
+    actual = ":aarch64-linux-gcc_15.3.0-posix",
 )
