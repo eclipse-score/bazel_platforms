@@ -22,12 +22,12 @@ package(default_visibility = ["//visibility:public"])
 constraint_setting(name = "sdp_version")
 
 constraint_value(
-    name = "sdp_7.1.0",
+    name = "sdp_8.0.0",
     constraint_setting = ":sdp_version",
 )
 
 constraint_value(
-    name = "sdp_8.0.0",
+    name = "sdp_8.0.5",
     constraint_setting = ":sdp_version",
 )
 
@@ -74,24 +74,4 @@ constraint_value(
 constraint_value(
     name = "gcc_12.2.0",
     constraint_setting = ":gcc_version",
-)
-
-constraint_value(
-    name = "gcc_8.3.0",
-    constraint_setting = ":gcc_version",
-)
-
-# --------------------------------------------------------------------------------
-# Deprecated values
-# --------------------------------------------------------------------------------
-alias(
-    name = "qnx_8.0.0",
-    actual = ":sdp_8.0.0",
-    deprecation = "This target is deprecated. Please use target `@score_bazel_platforms//version:sdp_8.0.0`",
-)
-
-alias(
-    name = "qnx_7.1.0",
-    actual = ":sdp_7.1.0",
-    deprecation = "This target is deprecated. Please use target `@score_bazel_platforms//version:sdp_7.1.0`",
 )
