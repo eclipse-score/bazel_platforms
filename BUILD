@@ -55,6 +55,15 @@ platform(
 # List of derived platforms from base platforms
 # --------------------------------------------------------------------------------
 platform(
+    name = "aarch64-qnx-sdp_8.0.4-posix",
+    constraint_values = [
+        "@score_bazel_platforms//version:sdp_8.0.4",
+        "@score_bazel_platforms//runtime_es:posix",
+    ],
+    parents = [":aarch64-qnx"],
+)
+
+platform(
     name = "aarch64-qnx-sdp_8.0.0-posix",
     constraint_values = [
         "@score_bazel_platforms//version:sdp_8.0.0",
@@ -70,6 +79,15 @@ platform(
         "@score_bazel_platforms//runtime_es:posix",
     ],
     parents = [":aarch64-qnx"],
+)
+
+platform(
+    name = "x86_64-qnx-sdp_8.0.4-posix",
+    constraint_values = [
+        "@score_bazel_platforms//version:sdp_8.0.4",
+        "@score_bazel_platforms//runtime_es:posix",
+    ],
+    parents = [":x86_64-qnx"],
 )
 
 platform(
