@@ -167,18 +167,18 @@ platform(
 # Platform definitions for EBcLfSA (EB corbos Linux for Safety Applications)
 # --------------------------------------------------------------------------------
 platform(
-    name = "aarch64-linux-sdk_0.1.0-ebclfsa",
+    name = "aarch64-linux-sdk_2.0.0-beta2-ebclfsa",
     constraint_values = [
-        "@score_bazel_platforms//version:sdk_0.1.0",
+        "@score_bazel_platforms//version:sdk_2.0.0-beta2",
         "@score_bazel_platforms//runtime_es:ebclfsa",
     ],
     parents = [":aarch64-linux"],
 )
 
 platform(
-    name = "aarch64-linux-sdk_2.0.0-beta2-ebclfsa",
+    name = "aarch64-linux-sdk_2.0.0-beta3-ebclfsa",
     constraint_values = [
-        "@score_bazel_platforms//version:sdk_2.0.0-beta2",
+        "@score_bazel_platforms//version:sdk_2.0.0-beta3",
         "@score_bazel_platforms//runtime_es:ebclfsa",
     ],
     parents = [":aarch64-linux"],
