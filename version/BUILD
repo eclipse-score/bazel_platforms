@@ -42,12 +42,12 @@ constraint_value(
 constraint_setting(name = "sdk_version")
 
 constraint_value(
-    name = "sdk_0.1.0",
+    name = "sdk_2.0.0-beta2",
     constraint_setting = ":sdk_version",
 )
 
 constraint_value(
-    name = "sdk_2.0.0-beta2",
+    name = "sdk_2.0.0-beta3",
     constraint_setting = ":sdk_version",
 )
 
