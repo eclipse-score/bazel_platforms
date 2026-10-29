@@ -155,6 +155,14 @@ platform(
     parents = [":aarch64-linux"],
 )
 
+platform(
+    name = "aarch64-linux-autosd10-crossland",
+    constraint_values = [
+        "@score_bazel_platforms//runtime_es:autosd10-crossland",
+    ],
+    parents = [":aarch64-linux"],
+)
+
 # --------------------------------------------------------------------------------
 # Platform definitions for EBcLfSA (EB corbos Linux for Safety Applications)
 # --------------------------------------------------------------------------------
