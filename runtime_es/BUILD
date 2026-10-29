@@ -28,6 +28,11 @@ constraint_value(
 )
 
 constraint_value(
+    name = "autosd10-crossland",
+    constraint_setting = ":runtime_ecosystem",
+)
+
+constraint_value(
     name = "ebclfsa",
     constraint_setting = ":runtime_ecosystem",
 )
