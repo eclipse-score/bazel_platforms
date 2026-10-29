@@ -241,11 +241,11 @@ Where:
 Note that 3rd and 4th segment are optional to set (however we advise people to use it).
 
 Examples:
-| Platform name                  | Meaning           |
-|--------------------------------|-----------------------------------------------------------------------------------|
-| x86_64-linux-gcc_12.2.0-posix  | x86_64 Linux built with GCC 12.2.0, POSIX runtime - generic execution environment |
-| aarch64-linux-autosd10         | Arm 64 Linux built, AutoSD 10 runtime - Automotive Stream Distribution            |
-| x86_64-linux-sdk_0.1.0-ebclfsa | x86_64 Linux built, EBcLfSA runtime - EB corbos Linux for Safety Applications     |
+| Platform name                         | Meaning           |
+|---------------------------------------|-----------------------------------------------------------------------------------|
+| x86_64-linux-gcc_12.2.0-posix         | x86_64 Linux built with GCC 12.2.0, POSIX runtime - generic execution environment |
+| aarch64-linux-autosd10                | Arm 64 Linux built, AutoSD 10 runtime - Automotive Stream Distribution            |
+| aarch64-linux-sdk_2.0.0-beta3-ebclfsa | Arm 64 Linux built, EBcLfSA runtime - EB corbos Linux for Safety Applications     |
 
 
 #### Naming Rules (Mandatory)
