@@ -10,6 +10,7 @@ By using this repository, S-CORE teams can ensure compatibility, reproducibility
 ## Table of content
 
 - [How to Use It](#how-to-use-it)
+  - [Latest Platform Aliases](#latest-platform-aliases)
 - [Existing Constraints](#existing-constraints)
   - [CPU Architecture](#cpu-architecture)
   - [Operating System](#operating-system)
@@ -49,6 +50,25 @@ my_rule(
 ```
 
 > NOTE: Predefined `constraint_setting` and `constraint_value` like CPU and/or OS targets can be used directly by referencing the `@platforms` module.
+
+### Latest Platform Aliases
+
+The repository provides aliases for the latest supported release of selected platform families:
+
+| Alias | Currently resolves to |
+|-------|------------------------|
+| `@score_bazel_platforms//:aarch64-qnx-sdp_latest-posix` | `aarch64-qnx-sdp_8.0.5-posix` |
+| `@score_bazel_platforms//:x86_64-qnx-sdp_latest-posix` | `x86_64-qnx-sdp_8.0.5-posix` |
+| `@score_bazel_platforms//:aarch64-linux-gcc_latest-posix` | `aarch64-linux-gcc_15.3.0-posix` |
+| `@score_bazel_platforms//:x86_64-linux-gcc_latest-posix` | `x86_64-linux-gcc_15.3.0-posix` |
+
+For example, a build can select the latest supported x86_64 Linux GCC platform with:
+
+```text
+build:<config> --platforms=@score_bazel_platforms//:x86_64-linux-gcc_latest-posix
+```
+
+These aliases are maintained explicitly and do not update automatically when a new release is added. Use a versioned platform target when reproducibility or long-term compatibility is required.
 
 ## Existing constraints
 
@@ -182,6 +202,8 @@ The sdp_version constraint is used to:
 - align with deployment/runtime expectations
 - control integration against specific platform releases
 
+The currently defined SDP constraint values are `sdp_8.0.0`, `sdp_8.0.4`, and `sdp_10.0.0`. The predefined QNX POSIX platforms currently use SDP `8.0.0` and `8.0.4`.
+
 ### Runtime Ecosystem
 
 The runtime_ecosystem constraint identifies the system-level runtime environment a binary or target is built to run in.</br>
@@ -235,7 +257,7 @@ Where:
 |---------------------|----------------------------------------------|-------------------------------|
 | `target_cpu`        | CPU instruction set architecture             | `@platforms//cpu`             |
 | `target_os`         | Operating system family                      | `@platforms//os`              |
-| `platform_variant`  | GCC version or SDK/SDP version or OS version | `gcc_version` or `os_version` |
+| `platform_variant`  | GCC, SDK, SDP, or OS version                 | `gcc_version`, `sdk_version`, `sdp_version`, or `os_version` |
 | `runtime_es`        | Runtime ecosystem                            | `runtime_es`                  |
 
 Note that 3rd and 4th segment are optional to set (however we advise people to use it).
@@ -254,7 +276,7 @@ Examples:
 No component may be omitted or merged with another.
 
 2. **Lowercase only**.</br>
-Platform names must be lowercase and kebab-cased.
+Platform names must use lowercase, hyphen-separated components. Version components retain the underscore used by the constraint name, for example `gcc_15.3.0` or `sdp_8.0.4`.
 
 3. **Exactly one version dimension**.</br>
 Use:
