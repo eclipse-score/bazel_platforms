@@ -184,6 +184,15 @@ platform(
     parents = [":aarch64-linux"],
 )
 
+platform(
+    name = "aarch64-linux-sdk_2.0.0-beta3-ebclfsa-hi",
+    constraint_values = [
+        "@score_bazel_platforms//version:sdk_2.0.0-beta3",
+        "@score_bazel_platforms//runtime_es:ebclfsa-hi",
+    ],
+    parents = [":aarch64-linux"],
+)
+
 # --------------------------------------------------------------------------------
 # List of aliases (deprecated targets) to keep compatibility
 # --------------------------------------------------------------------------------
