@@ -32,6 +32,11 @@ constraint_value(
 )
 
 constraint_value(
+    name = "sdp_8.0.4",
+    constraint_setting = ":sdp_version",
+)
+
+constraint_value(
     name = "sdp_10.0.0",
     constraint_setting = ":sdp_version",
 )
